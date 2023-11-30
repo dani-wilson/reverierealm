@@ -203,16 +203,36 @@
       "/Users/daniwilson/danis_projects/ReverieRealm/config/routes.rb": {
         "lines": [
           1,
+          1,
           null,
-          null,
-          null,
-          null,
+          1,
           null
         ]
       },
       "/Users/daniwilson/danis_projects/ReverieRealm/app/helpers/application_helper.rb": {
         "lines": [
           1,
+          null
+        ]
+      },
+      "/Users/daniwilson/danis_projects/ReverieRealm/spec/models/dream_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          null,
+          null,
+          1,
+          2,
+          null,
           null
         ]
       },
@@ -287,12 +307,65 @@
           null,
           1,
           1,
+          1,
+          1,
           null,
           1,
           null
         ]
+      },
+      "/Users/daniwilson/danis_projects/ReverieRealm/app/controllers/landing_controller.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/daniwilson/danis_projects/ReverieRealm/app/controllers/application_controller.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/daniwilson/danis_projects/ReverieRealm/app/controllers/users_controller.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          4,
+          null,
+          null,
+          1,
+          2,
+          2,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          1,
+          2,
+          null
+        ]
       }
     },
-    "timestamp": 1701209767
+    "timestamp": 1701382233
   }
 }
