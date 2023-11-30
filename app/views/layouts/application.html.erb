@@ -10,6 +10,14 @@
     <%= javascript_importmap_tags %>
   </head>
 
+  <% flash.each do |type, message| %>
+      <div class="alert alert-warning">
+        <section class=<%= type %>>
+          <strong><p><%= message %></p></strong>
+        </section>
+      </div>
+  <% end %>
+
   <body>
     <%= yield %>
   </body>
