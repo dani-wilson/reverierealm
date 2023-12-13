@@ -62,7 +62,30 @@ RSpec.describe "The landing page" do
 
       click_button("Create Account")
 
-      expect(page).to have_content("Fields cannot be blank.")
+      expect(page).to have_content("User must enter a valid email address.")
+      expect(current_path).to eq(new_user_path)
+    end
+
+    it "SAD PATH: only a valid email address format can be accepted" do
+      visit "/"
+
+      click_link "Create an Account"
+
+      expect(current_path).to eq(new_user_path)
+
+      expect(page).to have_field("Username")
+      expect(page).to have_field("Email")
+      expect(page).to have_field("Password")
+      expect(page).to have_field("Confirm Password")
+
+      fill_in('Username', with: "DreamyDani")
+      fill_in('Email', with: 'monkey')
+      fill_in('Password', with: "password123")
+      fill_in('Confirm Password', with: "password123")
+
+      click_button("Create Account")
+
+      expect(page).to have_content("User must enter a valid email address.")
       expect(current_path).to eq(new_user_path)
     end
   end
