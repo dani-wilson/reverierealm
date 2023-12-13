@@ -14,7 +14,11 @@ class UsersController < ApplicationController
       flash[:message] = "Account successfully created!"
       redirect_to user_path(@user.id)
     else
-      flash[:error] = "Fields cannot be blank."
+      if @user.errors[:email].present?
+        flash[:error] = "User must enter a valid email address."
+      else
+        flash[:error] = @user.errors.full_messages[1]
+      end
       redirect_to new_user_path
     end
   end
