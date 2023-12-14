@@ -44,7 +44,7 @@ RSpec.describe "The landing page" do
       expect(current_path).to eq(user_path(User.last.id))
     end
 
-    xit "SAD PATH: My username must be unique" do
+    it "SAD PATH: My username must be unique" do
       visit "/"
 
       click_link "Create an Account"
@@ -156,6 +156,20 @@ RSpec.describe "The landing page" do
       expect(page).to have_content("Welcome, #{@user.username}")
 
       expect(current_path).to eq(user_path(@user))
+    end
+
+    it "SAD PATH: cannot log in with invalid credentials" do
+      visit "/"
+
+      click_link("Log In")
+
+      fill_in('Username', with: 'DreamyDani')
+      fill_in('Password', with: 'wrongpassword')
+      click_button('Log In')
+
+      expect(page).to have_content("Invalid credentials.")
+
+      expect(current_path).to eq("/")
     end
   end
 end
