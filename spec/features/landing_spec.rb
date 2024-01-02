@@ -56,6 +56,8 @@ RSpec.describe "The landing page" do
 
       click_button("Create Account")
 
+      click_link("Log Out")
+
       visit "/"
 
       click_link "Create an Account"
@@ -137,6 +139,10 @@ RSpec.describe "The landing page" do
     it "HAPPY PATH: has the option to login with an already-made account" do
       visit "/"
 
+      click_link "Log Out"
+
+      visit "/"
+      
       expect(page).to have_link("Log In")
 
       click_link('Log In')
@@ -145,6 +151,10 @@ RSpec.describe "The landing page" do
     end
 
     it "HAPPY PATH: can log in" do
+      visit "/"
+
+      click_link "Log Out" 
+
       visit "/"
 
       click_link("Log In")
@@ -161,6 +171,10 @@ RSpec.describe "The landing page" do
     it "SAD PATH: cannot log in with invalid credentials" do
       visit "/"
 
+      click_link "Log Out"
+
+      visit "/"
+
       click_link("Log In")
 
       fill_in('Username', with: 'DreamyDani')
@@ -169,7 +183,40 @@ RSpec.describe "The landing page" do
 
       expect(page).to have_content("Invalid credentials.")
 
-      expect(current_path).to eq("/")
+      expect(current_path).to eq(login_path)
+    end
+
+    it "HAPPY PATH: when I have a pre-existing session, I do not see an option to log in" do
+      visit "/"
+
+      expect(page).to_not have_content("Create an Account")
+      expect(page).to_not have_content("Log In")
+      expect(page).to have_content("Welcome to ReverieRealm")
+      expect(page).to have_link("My Dashboard")
+    end
+  end
+
+  describe "the log out button" do
+    before(:each) do
+      visit "/"
+
+      click_link "Create an Account"
+
+      expect(current_path).to eq(new_user_path)
+
+      fill_in('Username', with: "DreamyDani")
+      fill_in('Email', with: "dreams@test.com")
+      fill_in('Password', with: "password123")
+      fill_in('Confirm Password', with: "password123")
+
+      click_button("Create Account")
+
+      @user = User.first
+    end
+    it "displays a log out link on the page" do
+      visit "/"
+
+      expect(page).to have_link("Log Out")
     end
   end
 end
