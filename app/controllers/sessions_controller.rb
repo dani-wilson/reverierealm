@@ -11,8 +11,14 @@ class SessionsController < ApplicationController
         redirect_to user_path(user)
       else
         flash[:alert] = "Invalid credentials."
-        redirect_to "/"
+        redirect_to login_path
       end
     end
+  end
+
+  def destroy
+    session.delete(:user_id)
+    @user = nil
+    redirect_to root_path
   end
 end
