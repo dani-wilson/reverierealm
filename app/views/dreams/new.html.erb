@@ -6,17 +6,17 @@
     <%= f.label :dream_date, 'Date of Dream' %>
     <%= f.date_field :dream_date %>
     <br>
-    <%= f.label :privacy_setting, 'Private?' %>
-    <%= f.check_box :privacy_setting %>
-    <br>
-    <%= f.label :favorite, 'Favorite' %>
-    <%= f.check_box :favorite %>
-    <br>
     <%= f.label :dream_content, 'Dream Content' %>
     <%= f.text_area :dream_content %>
     <br>
     <%= f.label :additional_insights, 'Additional Insights' %>
     <%= f.text_area :additional_insights %>
     <br>
-    <%= f.submit 'Log In' %>
+    <%= f.label :privacy_setting, 'Private?' %>
+    <%= f.check_box :privacy_setting %>
+    <br>
+    <%= f.label :favorite, 'Favorite' %>
+    <%= f.check_box :favorite %>
+    <br>
+    <%= f.submit 'Create Entry' %>
 <% end %>
