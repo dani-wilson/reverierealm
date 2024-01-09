@@ -1,12 +1,12 @@
 <h3>Creating new dream entry...</h3>
 <%= form_with model: @dream, url: dreams_path, method: :post do |f| %>
-    <%= f.label :dream_title, 'Title' %>
+    <%= f.label :dream_title, 'Title*' %>
     <%= f.text_field :dream_title %>
     <br>
-    <%= f.label :dream_date, 'Date of Dream' %>
+    <%= f.label :dream_date, 'Date of Dream*' %>
     <%= f.text_field :dream_date, as: :date %> 
     <br>
-    <%= f.label :dream_content, 'Dream Content' %>
+    <%= f.label :dream_content, 'Dream Content*' %>
     <%= f.text_area :dream_content %>
     <br>
     <%= f.label :additional_insights, 'Additional Insights' %>
