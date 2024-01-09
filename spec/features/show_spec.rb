@@ -29,11 +29,11 @@ RSpec.describe "The Show Page" do
 
     expect(current_path).to eq(new_dream_path)
 
-    expect(page).to have_field("Title")
-    expect(page).to have_field("Date of Dream")
+    expect(page).to have_field("Title*")
+    expect(page).to have_field("Date of Dream*")
     expect(page).to have_field("Private?")
     expect(page).to have_field("Favorite")
-    expect(page).to have_field("Dream Content")
+    expect(page).to have_field("Dream Content*")
     expect(page).to have_field("Additional Insights")
     expect(page).to have_button("Create Entry")
   end
@@ -41,9 +41,9 @@ RSpec.describe "The Show Page" do
   it "I can create a dream journal entry" do
     click_button("New Entry")
 
-    fill_in("Title", with: "Delicious Soup")
-    fill_in("Date of Dream", with: "01/03/2024")
-    fill_in("Dream Content", with: "I'm at some sort of large convention. Someone I know from highschool is here and has made four different kinds of soups. He wants me to try them all, and I do, and they're extremely delicious. He watches me eat them with fondness.")
+    fill_in("Title*", with: "Delicious Soup")
+    fill_in("Date of Dream*", with: "01/03/2024")
+    fill_in("Dream Content*", with: "I'm at some sort of large convention. Someone I know from highschool is here and has made four different kinds of soups. He wants me to try them all, and I do, and they're extremely delicious. He watches me eat them with fondness.")
     fill_in("Additional Insights", with: "Soup symbolizes emotional nourishment and comfort. Tomatoes represent domestic life (which was one of the soup flavors.)")
     check("Private?")
     check("Favorite")
@@ -58,9 +58,9 @@ RSpec.describe "The Show Page" do
   it "once I've submitted a dream, I see it on my dashboard" do
     click_button("New Entry")
 
-    fill_in("Title", with: "Winter Garden")
-    fill_in("Date of Dream", with: "12/31/2022")
-    fill_in("Dream Content", with: "It's icy and there's snow everywhere, but I find a patch of lettuce and carrots growing. I feel so happy")
+    fill_in("Title*", with: "Winter Garden")
+    fill_in("Date of Dream*", with: "12/31/2022")
+    fill_in("Dream Content*", with: "It's icy and there's snow everywhere, but I find a patch of lettuce and carrots growing. I feel so happy")
     fill_in("Additional Insights", with: "Good stuff")
     check("Private?")
     check("Favorite")
@@ -74,19 +74,30 @@ RSpec.describe "The Show Page" do
     expect(page).to have_content("12/31/2022")
   end
 
-  it "I do not need to have all fields filled out to submit an entry" do
+  it "only required fields are needed to submit an entry" do
     click_button("New Entry")
 
-    fill_in("Title", with: "A cute puppy")
-    fill_in("Date of Dream", with: "07/21/2023")
-    fill_in("Dream Content", with: "There's a cute white puppy and she bites really hard.")
+    fill_in("Title*", with: "A cute puppy")
+    fill_in("Date of Dream*", with: "07/21/2023")
+    fill_in("Dream Content*", with: "There's a cute white puppy and she bites really hard.")
 
     click_button("Create Entry")
-    
     expect(page).to have_content("Entry saved.")
 
     expect(page).to have_content("A cute puppy")
     expect(page).to have_content("There's a cute white puppy and")
     expect(page).to have_content("07/21/2023")
+  end
+
+  it "SAD PATH: required fields are required" do
+    click_button("New Entry")
+
+    fill_in("Date of Dream*", with: "07/21/2023")
+    fill_in("Dream Content*", with: "There's a cute white puppy and she bites really hard.")
+
+    click_button("Create Entry")
+
+    expect(page).to have_content("Required fields cannot be blank.")
+    expect(page).to_not have_content("Entry saved.")
   end
 end
