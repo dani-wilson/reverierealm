@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       if @user.errors[:email].present?
         flash[:error] = "User must enter a valid email address."
       else
-        flash[:error] = @user.errors.full_messages[1]
+        flash[:error] = "Fields cannot be blank."
       end
       redirect_to new_user_path
     end
