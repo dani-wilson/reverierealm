@@ -4,7 +4,7 @@ class CreateDreams < ActiveRecord::Migration[7.0]
       t.string :dream_title
       t.string :dream_content
       t.string :dream_date
-      t.integer :privacy_setting, default: 0
+      t.boolean :privacy_setting
       t.boolean :favorite
       t.string :additional_insights
 
