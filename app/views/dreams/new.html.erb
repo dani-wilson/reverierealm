@@ -1,10 +1,10 @@
 <h3>Creating new dream entry...</h3>
-<%= form_with url: dreams_path, method: :post do |f| %>
+<%= form_with model: @dream, url: dreams_path, method: :post do |f| %>
     <%= f.label :dream_title, 'Title' %>
     <%= f.text_field :dream_title %>
     <br>
     <%= f.label :dream_date, 'Date of Dream' %>
-    <%= f.date_field :dream_date %>
+    <%= f.text_field :dream_date, as: :date %> 
     <br>
     <%= f.label :dream_content, 'Dream Content' %>
     <%= f.text_area :dream_content %>
@@ -18,5 +18,5 @@
     <%= f.label :favorite, 'Favorite' %>
     <%= f.check_box :favorite %>
     <br>
-    <%= f.submit 'Create Entry' %>
+    <%= f.submit 'Create Entry', data: {turbo: false} %>
 <% end %>
