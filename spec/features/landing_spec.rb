@@ -84,13 +84,13 @@ RSpec.describe "The landing page" do
       expect(page).to have_field("Password")
       expect(page).to have_field("Confirm Password")
 
-      fill_in('Username', with: "DreamyDani")
+      fill_in('Email', with: 'dani@test.com')
       fill_in('Password', with: "password123")
       fill_in('Confirm Password', with: "password123")
 
       click_button("Create Account")
-
-      expect(page).to have_content("User must enter a valid email address.")
+      
+      expect(page).to have_content("Fields cannot be blank.")
       expect(current_path).to eq(new_user_path)
     end
 
