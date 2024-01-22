@@ -15,6 +15,10 @@ class DreamsController < ApplicationController
       render :new
     end
   end
+
+  def show
+    @dream = Dream.find_by(id: params[:id], user_id: session[:user_id])
+  end
   
 
   private
