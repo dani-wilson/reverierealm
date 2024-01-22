@@ -2,7 +2,7 @@
 <br>
 <% @dreams = Dream.all %>
 <% @dreams.each do |dream| %>
-  <%= link_to dream.dream_title %> -- <%= dream.dream_date %>
+  <%= link_to dream.dream_title, dream_path(dream.id) %> -- <%= dream.dream_date %>
   <br>
   <%= dream.dream_content %>
 <% end %>
